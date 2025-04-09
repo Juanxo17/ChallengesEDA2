@@ -28,4 +28,4 @@ const persono = {
     }
 };
 
-persono.envejecer(2); // Después de 1 segundo: Ahora tengo 30 años.
+persono.envejecer(2); 

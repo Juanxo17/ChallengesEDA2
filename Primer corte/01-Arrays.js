@@ -54,10 +54,10 @@ let queFrutasLlevo = function (callback) {
 
 let numeros2 = [1, 2, 3, 4, 5, 6, 7, 8, 2, 4, 2, 2];
 
-// Ajustamos el flujo de ejecución
+
 adivinarPosicion(numeros, () => {
     queFrutasLlevo(() => {
         console.log("La ultima aparicion del numero 2 en el array fue en la posicion: " + numeros2.lastIndexOf(2));
-        rl.close(); // Ahora cerramos rl después de todo
+        rl.close(); 
     });
 });
