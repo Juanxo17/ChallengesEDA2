@@ -1,68 +1,70 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Resetea algunos estilos por defecto */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0; /* Color de fondo suave */
+  color: #333; /* Color de texto */
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Estilo del contenedor principal */
+.container {
+  background-color: #fff; /* Fondo blanco para el contenedor */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  padding: 20px; /* Espaciado interno */
+  width: 300px; /* Ancho fijo para el contenedor */
+  text-align: center; /* Centrar el texto */
 }
 
+/* Estilos para los botones */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  background-color: #007bff; /* Color de fondo azul */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px 15px; /* Espaciado interno */
+  cursor: pointer; /* Cursor de puntero */
+  transition: background-color 0.3s ease; /* Transición suave al cambiar color */
+  width: 100%; /* Botón ocupa todo el ancho */
+  margin-top: 10px; /* Espacio entre botones */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Efecto hover para los botones */
+button:hover {
+  background-color: #0056b3; /* Color más oscuro en hover */
+}
+
+/* Estilo del formulario */
+form {
+  display: flex; /* Flexbox para el formulario */
+  flex-direction: column; /* Columnas para los elementos */
+}
+
+/* Estilo de los inputs */
+input[type="email"],
+input[type="password"] {
+  padding: 10px; /* Espaciado interno */
+  margin-top: 10px; /* Espacio arriba del input */
+  border: 1px solid #ccc; /* Borde gris claro */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Estilo del mensaje de bienvenida */
+h1 {
+  color: #007bff; /* Color azul para el título */
+  margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+/* Estilo de la página de inicio */
+h2 {
+  margin-top: 20px; /* Espacio encima del título */
 }
