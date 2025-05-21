@@ -1,4 +1,4 @@
-// src/app/store.js
+
 import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
 import stackReducer from '../features/stack/stackSlice';

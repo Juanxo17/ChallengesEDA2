@@ -1,0 +1,147 @@
+import { useState, useEffect } from 'react';
+import './App.css';
+import './MenuStyles.css';
+import Menu from './Menu';
+
+function App() {
+  const [activeMenu, setActiveMenu] = useState(null);
+  const [menu, setMenu] = useState(null);
+  const [menuItems, setMenuItems] = useState([]);
+  
+  useEffect(() => {
+    // Crear el árbol de menú cuando el componente se monta
+    const newMenu = new Menu();
+    
+    // Crear el menú principal con elementos principales
+    newMenu.crearMenu([
+      'Inicio', 
+      'Servicios', 
+      'Productos', 
+      'Blog', 
+      'Contacto'
+    ]);
+    
+    // Agregar submenús a los elementos principales
+    newMenu.agregarSubmenu('Servicios', [
+      'Desarrollo Web', 
+      'Diseño UI/UX', 
+      'Marketing Digital'
+    ]);
+    
+    newMenu.agregarSubmenu('Productos', [
+      'Software', 
+      'Hardware', 
+      'Consultoría'
+    ]);
+    
+    newMenu.agregarSubmenu('Blog', [
+      'Tutoriales', 
+      'Noticias', 
+      'Eventos'
+    ]);
+    
+    setMenu(newMenu);
+    
+    // Usar BFS para mostrar los elementos de primer nivel
+    if (newMenu.raiz) {
+      setMenuItems(newMenu.raiz.hijos);
+    }
+  }, []);
+  
+  const toggleSubmenu = (index) => {
+    if (activeMenu === index) {
+      setActiveMenu(null);
+    } else {
+      setActiveMenu(index);
+    }
+  };
+
+  return (
+    <div className="challenge-container">
+      <div className="menu-sidebar">
+        <h3 className="menu-title">CHALLENGE 15</h3>
+        <ul className="menu-list">
+          {menuItems.map((menuItem, index) => (
+            <li key={index}>
+              <div 
+                className="menu-item" 
+                onClick={() => toggleSubmenu(index)}
+              >
+                {menuItem.valor}
+              </div>
+              {menuItem.hijos && menuItem.hijos.length > 0 && (
+                <ul className={`submenu ${activeMenu === index ? 'active' : ''}`}>
+                  {menuItem.hijos.map((submenu, subIndex) => (
+                    <li key={subIndex} className="submenu-item">
+                      {submenu.valor}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <div className="content-area">
+        <h1>Challenge 15: Implementación de Árboles N-arios</h1>
+        
+        <div className="implementation-section">
+          <h2>Cómo implementar árboles n-arios</h2>
+          <p>Para implementar un árbol n-ario, necesitamos crear una clase Nodo que tenga un valor y una referencia a sus hijos:</p>
+          <div className="code-snippet">
+            <pre>{`class Nodo {
+  constructor(valor) {
+    this.valor = valor;
+    this.hijos = [];
+  }
+
+  agregarHijo(nodo) {
+    this.hijos.push(nodo);
+  }
+}`}</pre>
+          </div>
+        </div>
+        
+        <div className="implementation-section">
+          <h2>Métodos de recorrido del árbol</h2>
+          <p>Podemos recorrer los árboles usando:</p>
+          <ul>
+            <li><strong>DFS (Depth-First Search)</strong>: Recorre el árbol tan profundo como sea posible por cada rama.</li>
+            <li><strong>BFS (Breadth-First Search)</strong>: Recorre el árbol nivel por nivel, de izquierda a derecha.</li>
+          </ul>
+          
+          <div className="tree-diagrams">
+            <div className="tree-diagram">
+              <h3>DFS (Recorrido en profundidad)</h3>
+              <div className="code-snippet">
+                <pre>{`function dfs(nodo) {
+  console.log(nodo.valor);
+  for (let hijo of nodo.hijos) {
+    dfs(hijo);
+  }
+}`}</pre>
+              </div>
+            </div>
+            
+            <div className="tree-diagram">
+              <h3>BFS (Recorrido en amplitud)</h3>
+              <div className="code-snippet">
+                <pre>{`function bfs(raiz) {
+  const cola = [raiz];
+  while (cola.length > 0) {
+    const actual = cola.shift();
+    console.log(actual.valor);
+    cola.push(...actual.hijos);
+  }
+}`}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
